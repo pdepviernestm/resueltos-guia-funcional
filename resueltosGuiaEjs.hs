@@ -81,7 +81,13 @@ cuadradoPerfectoMayorQue numero
                     | otherwise = cuadradoPerfectoMayorQue (numero+1)   -- Recursividad
 
 cantidadCuadradosPerfectos :: Int -> Int -> Int
-cantidadCuadradosPerfectos desde hasta = length (filter esCuadradoPerfecto [desde..hasta])
+cantidadCuadradosPerfectos desde hasta
+                                | desde > hasta = 0
+                                | esCuadradoPerfecto desde = 1 + cantidadCuadradosPerfectos (desde+1) hasta
+                                | otherwise = cantidadCuadradosPerfectos (desde+1) hasta
+
+
+--cantidadCuadradosPerfectos desde hasta = length (filter esCuadradoPerfecto [desde..hasta])
 
 
 -- Minimo comun multiplo
