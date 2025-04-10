@@ -9,3 +9,5 @@ correrTests = hspec $ do
     it "El pdepreludat se instaló correctamente" $ do
       doble 1 `shouldBe` 2
 
+doble :: Number -> Number
+doble x = x * 2
