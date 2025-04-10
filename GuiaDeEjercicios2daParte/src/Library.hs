@@ -124,13 +124,10 @@ esAntropomorfico :: Animal -> Bool
 esAntropomorfico animal = (elem "Hablar" . capacidades) animal && coeficiente animal > 60
 
 noTanCuerdo :: Animal -> Bool
-noTanCuerdo animal = length (capacidadesPinkiescas (capacidades animal)) > 2
-
-capacidadesPinkiescas :: [String] -> [String]
-capacidadesPinkiescas = filter esPinkieska
+noTanCuerdo animal = esPinkieska (capacidades animal !! floor (length (capacidades animal) / 2))
 
 esPinkieska :: String -> Bool  --No me convence esta solucion
-esPinkieska capacidad = capacidad == "Hacer " ++ drop 5 capacidad && length (drop 5 capacidad) <= 4 && any esVocal (drop 5 capacidad)
+esPinkieska capacidad = take 5 capacidad == "Hacer " && length (drop 5 capacidad) <= 4 && (esVocal . last) capacidad 
 
 esVocal :: Char -> Bool
 esVocal c = c `elem` "aeiouAEIOU"
