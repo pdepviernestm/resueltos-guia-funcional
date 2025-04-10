@@ -1,0 +1,7 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "GuiaDeEjercicios2daParte:lib"
+
+    - path: "./test"
+      component: "GuiaDeEjercicios2daParte:test:GuiaDeEjercicios2daParte-test"
